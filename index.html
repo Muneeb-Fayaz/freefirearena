@@ -1,0 +1,1338 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FreeFireArena.gg - Your Shot at Glory</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Poppins:wght@300;400;600;700&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        :root {
+            --electric-blue: #0066FF;
+            --neon-cyan: #00FFFF;
+            --jet-black: #000000;
+            --dark-charcoal: #1A1A1A;
+            --fiery-orange: #FF6600;
+            --white: #FFFFFF;
+        }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: var(--jet-black);
+            color: var(--white);
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+        
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(0, 0, 0, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            padding: 1rem 2rem;
+            border-bottom: 1px solid rgba(0, 255, 255, 0.3);
+        }
+        
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-family: 'Orbitron', monospace;
+            font-size: 1.8rem;
+            font-weight: 900;
+            background: linear-gradient(45deg, var(--electric-blue), var(--neon-cyan));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-decoration: none;
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+        
+        .nav-links a {
+            color: var(--white);
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s;
+            position: relative;
+        }
+        
+        .nav-links a:hover {
+            color: var(--neon-cyan);
+        }
+        
+        .btn-login {
+            background: linear-gradient(45deg, var(--electric-blue), var(--neon-cyan));
+            padding: 0.5rem 1.5rem;
+            border-radius: 25px;
+            transition: all 0.3s;
+        }
+        
+        .btn-login:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 20px rgba(0, 255, 255, 0.4);
+        }
+        
+        /* YouTube Button */
+        .youtube-btn {
+            background: linear-gradient(45deg, #FF0000, #CC0000);
+            color: white;
+            padding: 0.5rem 1.5rem;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: all 0.3s;
+        }
+        
+        .youtube-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 20px rgba(255, 0, 0, 0.4);
+        }
+        
+        /* Hero Section */
+        .hero {
+            margin-top: 80px;
+            min-height: 100vh;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, rgba(0, 102, 255, 0.1) 0%, rgba(0, 0, 0, 0.9) 100%);
+            overflow: hidden;
+        }
+        
+        .animated-bg {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                repeating-linear-gradient(90deg, transparent, transparent 35px, rgba(0, 255, 255, 0.03) 35px, rgba(0, 255, 255, 0.03) 70px),
+                repeating-linear-gradient(0deg, transparent, transparent 35px, rgba(0, 102, 255, 0.03) 35px, rgba(0, 102, 255, 0.03) 70px);
+            animation: grid-move 10s linear infinite;
+        }
+        
+        @keyframes grid-move {
+            0% { transform: translate(0, 0); }
+            100% { transform: translate(70px, 70px); }
+        }
+        
+        .hero-content {
+            position: relative;
+            text-align: center;
+            z-index: 2;
+            padding: 0 2rem;
+        }
+        
+        .hero h1 {
+            font-family: 'Orbitron', monospace;
+            font-size: clamp(3rem, 8vw, 6rem);
+            font-weight: 900;
+            letter-spacing: 3px;
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+            background: linear-gradient(45deg, var(--white), var(--neon-cyan));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: glow 2s ease-in-out infinite alternate;
+        }
+        
+        @keyframes glow {
+            from { text-shadow: 0 0 20px rgba(0, 255, 255, 0.5); }
+            to { text-shadow: 0 0 30px rgba(0, 255, 255, 0.8), 0 0 40px rgba(0, 102, 255, 0.5); }
+        }
+        
+        .hero-subtitle {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            color: rgba(255, 255, 255, 0.9);
+            letter-spacing: 2px;
+        }
+        
+        .cta-primary {
+            display: inline-block;
+            background: linear-gradient(45deg, var(--fiery-orange), #FF8833);
+            color: var(--white);
+            padding: 1rem 3rem;
+            font-size: 1.2rem;
+            font-weight: 700;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            text-decoration: none;
+            transition: all 0.3s;
+            position: relative;
+            overflow: hidden;
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0% { box-shadow: 0 0 0 0 rgba(255, 102, 0, 0.7); }
+            70% { box-shadow: 0 0 0 20px rgba(255, 102, 0, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(255, 102, 0, 0); }
+        }
+        
+        .cta-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(255, 102, 0, 0.5);
+        }
+        
+        .prize-counter {
+            margin-top: 3rem;
+            padding: 1.5rem;
+            background: rgba(0, 0, 0, 0.5);
+            border: 2px solid rgba(0, 255, 255, 0.3);
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+        }
+        
+        .prize-counter h3 {
+            font-size: 1rem;
+            color: var(--neon-cyan);
+            margin-bottom: 0.5rem;
+        }
+        
+        .prize-amount {
+            font-family: 'Orbitron', monospace;
+            font-size: 3rem;
+            font-weight: 900;
+            color: var(--white);
+            text-shadow: 0 0 20px rgba(0, 255, 255, 0.5);
+        }
+        
+        /* Game Mode Tabs */
+        .mode-tabs {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 3rem;
+            flex-wrap: wrap;
+        }
+        
+        .mode-tab {
+            background: rgba(0, 0, 0, 0.5);
+            border: 2px solid rgba(0, 255, 255, 0.3);
+            color: var(--white);
+            padding: 1rem 2rem;
+            border-radius: 30px;
+            font-family: 'Orbitron', monospace;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-transform: uppercase;
+        }
+        
+        .mode-tab.active {
+            background: linear-gradient(45deg, var(--electric-blue), var(--neon-cyan));
+            border-color: var(--neon-cyan);
+            box-shadow: 0 5px 20px rgba(0, 255, 255, 0.4);
+        }
+        
+        .mode-tab:hover {
+            transform: translateY(-2px);
+            border-color: var(--neon-cyan);
+        }
+        
+        .mode-info {
+            display: inline-block;
+            background: rgba(0, 102, 255, 0.2);
+            padding: 0.2rem 0.8rem;
+            border-radius: 15px;
+            font-size: 0.7rem;
+            margin-left: 0.5rem;
+        }
+        
+        /* How It Works */
+        .how-it-works {
+            padding: 5rem 2rem;
+            background: var(--dark-charcoal);
+            position: relative;
+        }
+        
+        .section-title {
+            font-family: 'Orbitron', monospace;
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 3rem;
+            text-transform: uppercase;
+            background: linear-gradient(45deg, var(--electric-blue), var(--neon-cyan));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .steps-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        
+        .step-card {
+            background: rgba(0, 0, 0, 0.5);
+            border: 1px solid rgba(0, 255, 255, 0.2);
+            border-radius: 15px;
+            padding: 2rem;
+            text-align: center;
+            transition: all 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .step-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(0, 255, 255, 0.1), transparent);
+            transition: left 0.5s;
+        }
+        
+        .step-card:hover::before {
+            left: 100%;
+        }
+        
+        .step-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--neon-cyan);
+            box-shadow: 0 10px 30px rgba(0, 255, 255, 0.2);
+        }
+        
+        .step-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+        
+        .step-title {
+            font-family: 'Orbitron', monospace;
+            font-size: 1.3rem;
+            color: var(--neon-cyan);
+            margin-bottom: 1rem;
+        }
+        
+        /* Tournaments Section */
+        .tournaments {
+            padding: 5rem 2rem;
+            background: var(--jet-black);
+        }
+        
+        .tournament-grid {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+        
+        .tournament-card {
+            background: linear-gradient(135deg, rgba(26, 26, 26, 0.9), rgba(0, 0, 0, 0.9));
+            border: 2px solid transparent;
+            background-clip: padding-box;
+            border-radius: 20px;
+            padding: 1.5rem;
+            position: relative;
+            transition: all 0.3s;
+        }
+        
+        .tournament-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            border-radius: 20px;
+            padding: 2px;
+            background: linear-gradient(45deg, var(--electric-blue), var(--neon-cyan), var(--fiery-orange));
+            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            -webkit-mask-composite: xor;
+            mask-composite: exclude;
+            opacity: 0.7;
+        }
+        
+        .tournament-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0, 255, 255, 0.3);
+        }
+        
+        .tournament-badge {
+            display: inline-block;
+            background: var(--fiery-orange);
+            padding: 0.3rem 1rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            animation: blink 2s infinite;
+        }
+        
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.7; }
+        }
+        
+        .tournament-title {
+            font-family: 'Orbitron', monospace;
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--white);
+        }
+        
+        .tournament-stats {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .stat {
+            background: rgba(0, 0, 0, 0.5);
+            padding: 0.8rem;
+            border-radius: 10px;
+            text-align: center;
+        }
+        
+        .stat-label {
+            font-size: 0.8rem;
+            color: rgba(255, 255, 255, 0.6);
+            margin-bottom: 0.3rem;
+        }
+        
+        .stat-value {
+            font-family: 'Orbitron', monospace;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--neon-cyan);
+        }
+        
+        .prize-pool .stat-value {
+            color: var(--fiery-orange);
+            text-shadow: 0 0 10px rgba(255, 102, 0, 0.5);
+        }
+        
+        .countdown {
+            background: rgba(0, 102, 255, 0.1);
+            padding: 0.8rem;
+            border-radius: 10px;
+            text-align: center;
+            margin-bottom: 1rem;
+        }
+        
+        .countdown-label {
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.8);
+        }
+        
+        .countdown-time {
+            font-family: 'Orbitron', monospace;
+            font-size: 1.2rem;
+            color: var(--electric-blue);
+            font-weight: 700;
+        }
+        
+        .join-btn {
+            width: 100%;
+            background: linear-gradient(45deg, var(--fiery-orange), #FF8833);
+            color: var(--white);
+            padding: 1rem;
+            font-size: 1.1rem;
+            font-weight: 700;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .join-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 5px 20px rgba(255, 102, 0, 0.5);
+        }
+        
+        /* Winners Section */
+        .winners {
+            padding: 5rem 2rem;
+            background: var(--dark-charcoal);
+        }
+        
+        .winners-grid {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 1.5rem;
+        }
+        
+        .winner-card {
+            background: rgba(0, 0, 0, 0.6);
+            border-left: 4px solid var(--neon-cyan);
+            padding: 1.5rem;
+            border-radius: 10px;
+            transition: all 0.3s;
+        }
+        
+        .winner-card:hover {
+            transform: translateX(5px);
+            box-shadow: 0 5px 20px rgba(0, 255, 255, 0.2);
+        }
+        
+        .winner-name {
+            font-family: 'Orbitron', monospace;
+            font-size: 1.2rem;
+            color: var(--neon-cyan);
+            margin-bottom: 0.5rem;
+        }
+        
+        .winner-prize {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--fiery-orange);
+        }
+        
+        .winner-tournament {
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.7);
+            margin-top: 0.5rem;
+        }
+        
+        .testimonial {
+            max-width: 800px;
+            margin: 3rem auto 0;
+            background: rgba(0, 102, 255, 0.1);
+            border: 1px solid rgba(0, 255, 255, 0.3);
+            padding: 2rem;
+            border-radius: 15px;
+            text-align: center;
+        }
+        
+        .testimonial-text {
+            font-size: 1.1rem;
+            font-style: italic;
+            margin-bottom: 1rem;
+            color: rgba(255, 255, 255, 0.9);
+        }
+        
+        .testimonial-author {
+            font-family: 'Orbitron', monospace;
+            color: var(--neon-cyan);
+        }
+        
+        /* YouTube Live Section */
+        .youtube-live {
+            padding: 5rem 2rem;
+            background: var(--jet-black);
+            text-align: center;
+        }
+        
+        .live-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .live-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+        
+        .live-title {
+            font-family: 'Orbitron', monospace;
+            font-size: 2.5rem;
+            text-transform: uppercase;
+            background: linear-gradient(45deg, #FF0000, #CC0000);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .live-badge {
+            background: #FF0000;
+            color: white;
+            padding: 0.5rem 1.5rem;
+            border-radius: 25px;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            animation: blink 1.5s infinite;
+        }
+        
+        .stream-container {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+        
+        .stream-video {
+            background: rgba(0, 0, 0, 0.7);
+            border-radius: 15px;
+            padding: 2rem;
+            border: 2px solid rgba(255, 0, 0, 0.5);
+            box-shadow: 0 0 30px rgba(255, 0, 0, 0.3);
+        }
+        
+        .stream-placeholder {
+            width: 100%;
+            height: 400px;
+            background: linear-gradient(45deg, #1a1a1a, #333);
+            border-radius: 10px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .stream-placeholder h3 {
+            font-family: 'Orbitron', monospace;
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--neon-cyan);
+        }
+        
+        .stream-info {
+            background: rgba(0, 0, 0, 0.7);
+            border-radius: 15px;
+            padding: 2rem;
+            border: 1px solid rgba(0, 255, 255, 0.3);
+        }
+        
+        .stream-title {
+            font-family: 'Orbitron', monospace;
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--neon-cyan);
+        }
+        
+        .stream-stats {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 1.5rem;
+        }
+        
+        .stat-item {
+            text-align: center;
+        }
+        
+        .stat-value {
+            font-family: 'Orbitron', monospace;
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--fiery-orange);
+        }
+        
+        .stat-label {
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.7);
+        }
+        
+        .subscribe-note {
+            background: rgba(255, 0, 0, 0.1);
+            border: 1px solid rgba(255, 0, 0, 0.3);
+            border-radius: 10px;
+            padding: 1.5rem;
+            margin-top: 2rem;
+        }
+        
+        .subscribe-note h4 {
+            font-family: 'Orbitron', monospace;
+            color: #FF0000;
+            margin-bottom: 1rem;
+        }
+        
+        /* Contact Section */
+        .contact-section {
+            padding: 5rem 2rem;
+            background: var(--dark-charcoal);
+            text-align: center;
+        }
+        
+        .contact-container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: rgba(0, 0, 0, 0.7);
+            border: 2px solid rgba(0, 255, 255, 0.3);
+            border-radius: 20px;
+            padding: 3rem;
+        }
+        
+        .contact-title {
+            font-family: 'Orbitron', monospace;
+            font-size: 2rem;
+            margin-bottom: 2rem;
+            color: var(--neon-cyan);
+        }
+        
+        .contact-info {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+        
+        .contact-item {
+            background: rgba(0, 102, 255, 0.1);
+            padding: 1.5rem;
+            border-radius: 15px;
+            border: 1px solid rgba(0, 255, 255, 0.2);
+        }
+        
+        .contact-label {
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.7);
+            margin-bottom: 0.5rem;
+        }
+        
+        .contact-value {
+            font-family: 'Orbitron', monospace;
+            font-size: 1.5rem;
+            color: var(--white);
+        }
+        
+        .whatsapp-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.8rem;
+            background: linear-gradient(45deg, #25D366, #128C7E);
+            color: white;
+            padding: 1rem 2.5rem;
+            font-size: 1.2rem;
+            font-weight: 700;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            text-decoration: none;
+            transition: all 0.3s;
+            margin-top: 1rem;
+        }
+        
+        .whatsapp-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(37, 211, 102, 0.5);
+        }
+        
+        /* Final CTA */
+        .final-cta {
+            padding: 5rem 2rem;
+            background: linear-gradient(135deg, rgba(0, 102, 255, 0.1), rgba(0, 0, 0, 0.9));
+            text-align: center;
+        }
+        
+        .final-cta h2 {
+            font-family: 'Orbitron', monospace;
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+            background: linear-gradient(45deg, var(--white), var(--neon-cyan));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .final-cta p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            color: rgba(255, 255, 255, 0.9);
+        }
+        
+        /* Footer */
+        footer {
+            background: var(--jet-black);
+            padding: 3rem 2rem 2rem;
+            border-top: 1px solid rgba(0, 255, 255, 0.2);
+        }
+        
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+        
+        .footer-section h3 {
+            font-family: 'Orbitron', monospace;
+            color: var(--neon-cyan);
+            margin-bottom: 1rem;
+        }
+        
+        .footer-section a {
+            display: block;
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+            margin-bottom: 0.5rem;
+            transition: color 0.3s;
+        }
+        
+        .footer-section a:hover {
+            color: var(--neon-cyan);
+        }
+        
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: rgba(255, 255, 255, 0.5);
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .prize-amount {
+                font-size: 2rem;
+            }
+            
+            .tournament-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .stream-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .contact-info {
+                grid-template-columns: 1fr;
+            }
+            
+            .live-header {
+                flex-direction: column;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-container">
+            <a href="#" class="logo">FREEFIRE ARENA</a>
+            <div class="nav-links">
+                <a href="#tournaments">Tournaments</a>
+                <a href="#how-it-works">How It Works</a>
+                <a href="#winners">Winners</a>
+                <a href="#youtube-live">Live Stream</a>
+                <a href="#contact">Contact</a>
+                <a href="https://www.youtube.com/channel/YOUR_CHANNEL_ID" target="_blank" class="youtube-btn">
+                    <i class="fab fa-youtube"></i> YouTube
+                </a>
+                <a href="#" class="btn-login">Login</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="animated-bg"></div>
+        <div class="hero-content">
+            <h1>YOUR SHOT AT GLORY</h1>
+            <p class="hero-subtitle">ENTER THE ARENA. PROVE YOUR SKILL. CLAIM YOUR REWARD.</p>
+            <a href="#tournaments" class="cta-primary">BROWSE TOURNAMENTS & WIN!</a>
+            <div class="prize-counter">
+                <h3>TOTAL PRIZE POOL GIVEN OUT</h3>
+                <div class="prize-amount" id="prizeCounter">₹3,50,000</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works -->
+    <section class="how-it-works" id="how-it-works">
+        <h2 class="section-title">FROM ENTRY TO VICTORY IN 3 STEPS</h2>
+        <div class="steps-container">
+            <div class="step-card">
+                <div class="step-icon">💳</div>
+                <h3 class="step-title">REGISTER & PAY</h3>
+                <p>Choose your tournament, form your squad, and pay the small entry fee securely.</p>
+            </div>
+            <div class="step-card">
+                <div class="step-icon">🎮</div>
+                <h3 class="step-title">COMPETE & DOMINATE</h3>
+                <p>Drop in, fight for the Booyah, and climb the real-time leaderboard.</p>
+            </div>
+            <div class="step-card">
+                <div class="step-icon">🏆</div>
+                <h3 class="step-title">GET REWARDED INSTANTLY</h3>
+                <p>Win and watch your prize money hit your account within minutes.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Tournaments -->
+    <section class="tournaments" id="tournaments">
+        <h2 class="section-title">LIVE TOURNAMENTS - REGISTER NOW!</h2>
+        
+        <!-- Game Mode Tabs -->
+        <div class="mode-tabs">
+            <button class="mode-tab active" onclick="filterTournaments('all')">
+                ALL MODES
+            </button>
+            <button class="mode-tab" onclick="filterTournaments('bermuda')">
+                BERMUDA <span class="mode-info">12 MIN</span>
+            </button>
+            <button class="mode-tab" onclick="filterTournaments('clashsquad')">
+                CLASH SQUAD <span class="mode-info">4v4</span>
+            </button>
+        </div>
+        
+        <div class="tournament-grid" id="tournamentGrid">
+            <!-- Bermuda Tournaments -->
+            <div class="tournament-card" data-mode="bermuda">
+                <span class="tournament-badge">🔥 LIVE</span>
+                <h3 class="tournament-title">BERMUDA ELITE |10 TEAMS</h3>
+                <div class="tournament-stats">
+                    <div class="stat">
+                        <div class="stat-label">🎯 Entry Fee</div>
+                        <div class="stat-value">₹80</div>
+                    </div>
+                    <div class="stat prize-pool">
+                        <div class="stat-label">💰 Prize Pool</div>
+                        <div class="stat-value">₹500</div>
+                    </div>
+                </div>
+                <div class="countdown">
+                    <div class="countdown-label">🏝️ BERMUDA | 👥 Squad | Registration closes in:</div>
+                    <div class="countdown-time">02:15:38</div>
+                </div>
+                <button class="join-btn" data-tournament="BERMUDA ELITE #45">JOIN NOW - ₹80</button>
+            </div>
+
+            <div class="tournament-card" data-mode="clashsquad">
+                <span class="tournament-badge">🔥 LIVE</span>
+                <h3 class="tournament-title">CLASH SQUAD |8 TEAMS </h3>
+                <div class="tournament-stats">
+                    <div class="stat">
+                        <div class="stat-label">🎯 Entry Fee</div>
+                        <div class="stat-value">₹80</div>
+                    </div>
+                    <div class="stat prize-pool">
+                        <div class="stat-label">💰 Prize Pool</div>
+                        <div class="stat-value">₹500</div>
+                    </div>
+                </div>
+                <div class="countdown">
+                    <div class="countdown-label">⚔️ CLASH SQUAD | 4v4 | Registration closes in:</div>
+                    <div class="countdown-time">01:45:22</div>
+                </div>
+                <button class="join-btn" data-tournament="CLASH SQUAD PRO #12">JOIN NOW - ₹80</button>
+            </div>
+
+            <div class="tournament-card" data-mode="bermuda">
+                <span class="tournament-badge">⏳ UPCOMING</span>
+                <h3 class="tournament-title">BERMUDA WEEKEND WAR</h3>
+                <div class="tournament-stats">
+                    <div class="stat">
+                        <div class="stat-label">🎯 Entry Fee</div>
+                        <div class="stat-value">₹100</div>
+                    </div>
+                    <div class="stat prize-pool">
+                        <div class="stat-label">💰 Prize Pool</div>
+                        <div class="stat-value">₹ 600</div>
+                    </div>
+                </div>
+                <div class="countdown">
+                    <div class="countdown-label">🏝️ BERMUDA | 👥 Squad | Registration opens in:</div>
+                    <div class="countdown-time">05:42:18</div>
+                </div>
+                <button class="join-btn" data-tournament="BERMUDA WEEKEND WAR">JOIN NOW - ₹100</button>
+            </div>
+
+            <div class="tournament-card" data-mode="clashsquad">
+                <span class="tournament-badge">🔥 LIVE</span>
+                <h3 class="tournament-title">CLASH SQUAD DAILY |4 TEAMS min.</h3>
+                <div class="tournament-stats">
+                    <div class="stat">
+                        <div class="stat-label">🎯 Entry Fee</div>
+                        <div class="stat-value">₹40</div>
+                    </div>
+                    <div class="stat prize-pool">
+                        <div class="stat-label">💰 Prize Pool</div>
+                        <div class="stat-value">₹120</div>
+                    </div>
+                </div>
+                <div class="countdown">
+                    <div class="countdown-label">⚔️ CLASH SQUAD | 4v4 | Registration closes in:</div>
+                    <div class="countdown-time">00:45:12</div>
+                </div>
+                <button class="join-btn" data-tournament="CLASH SQUAD DAILY #156">JOIN NOW - ₹40</button>
+            </div>
+
+            <div class="tournament-card" data-mode="bermuda">
+                <span class="tournament-badge">⏳ UPCOMING</span>
+                <h3 class="tournament-title">BERMUDA PRO LEAGUE |8 TEAMS min.</h3>
+                <div class="tournament-stats">
+                    <div class="stat">
+                        <div class="stat-label">🎯 Entry Fee</div>
+                        <div class="stat-value">₹200</div>
+                    </div>
+                    <div class="stat prize-pool">
+                        <div class="stat-label">💰 Prize Pool</div>
+                        <div class="stat-value">₹1400</div>
+                    </div>
+                </div>
+                <div class="countdown">
+                    <div class="countdown-label">🏝️ BERMUDA | 👥 Squad | Registration opens in:</div>
+                    <div class="countdown-time">12:30:45</div>
+                </div>
+                <button class="join-btn" data-tournament="BERMUDA PRO LEAGUE">JOIN NOW - ₹200</button>
+            </div>
+
+            <div class="tournament-card" data-mode="clashsquad">
+                <span class="tournament-badge">⏳ UPCOMING</span>
+                <h3 class="tournament-title">CLASH SQUAD CHAMPIONS |16 teams</h3>
+                <div class="tournament-stats">
+                    <div class="stat">
+                        <div class="stat-label">🎯 Entry Fee</div>
+                        <div class="stat-value">₹120</div>
+                    </div>
+                    <div class="stat prize-pool">
+                        <div class="stat-label">💰 Prize Pool</div>
+                        <div class="stat-value">₹1800</div>
+                    </div>
+                </div>
+                <div class="countdown">
+                    <div class="countdown-label">⚔️ CLASH SQUAD | 4v4 | Registration opens in:</div>
+                    <div class="countdown-time">08:15:30</div>
+                </div>
+                <button class="join-btn" data-tournament="CLASH SQUAD CHAMPIONS">JOIN NOW - ₹120</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Winners Section -->
+    <section class="winners" id="winners">
+        <h2 class="section-title">INSTANT PAYOUTS, REAL WINNERS</h2>
+        <div class="winners-grid">
+            <div class="winner-card">
+                <div class="winner-name">PlayerXYZ</div>
+                <div class="winner-prize">₹1,200</div>
+                <div class="winner-tournament">Bermuda Daily #22</div>
+            </div>
+            <div class="winner-card">
+                <div class="winner-name">SkullCrusher99</div>
+                <div class="winner-prize">₹2,500</div>
+                <div class="winner-tournament">Clash Squad Elite #44</div>
+            </div>
+            <div class="winner-card">
+                <div class="winner-name">NinjaWarrior</div>
+                <div class="winner-prize">₹750</div>
+                <div class="winner-tournament">Bermuda Quick #88</div>
+            </div>
+            <div class="winner-card">
+                <div class="winner-name">ProSniper2024</div>
+                <div class="winner-prize">₹5,000</div>
+                <div class="winner-tournament">Clash Squad Pro #11</div>
+            </div>
+        </div>
+        <div class="testimonial">
+            <p class="testimonial-text">"I was skeptical at first, but the payment was in my PayPal before I even left the results screen. This is the real deal."</p>
+            <p class="testimonial-author">- SkullCrusher99</p>
+        </div>
+    </section>
+
+    <!-- YouTube Live Section -->
+    <section class="youtube-live" id="youtube-live">
+        <div class="live-container">
+            <div class="live-header">
+                <h2 class="live-title">LIVE STREAMING</h2>
+                <div class="live-badge">
+                    <span class="dot"></span> LIVE NOW
+                </div>
+            </div>
+            
+            <div class="stream-container">
+                <div class="stream-video">
+                    <div class="stream-placeholder">
+                        <h3>TOURNAMENT FINALS LIVE</h3>
+                        <p>Watch top players battle for the championship</p>
+                        <a href="https://www.youtube.com/channel/YOUR_CHANNEL_ID" target="_blank" class="youtube-btn" style="margin-top: 2rem;">
+                            <i class="fab fa-youtube"></i> WATCH ON YOUTUBE
+                        </a>
+                    </div>
+                </div>
+                <div class="stream-info">
+                    <h3 class="stream-title">CURRENT STREAM</h3>
+                    <div class="stream-stats">
+                        <div class="stat-item">
+                            <div class="stat-value">1.2K</div>
+                            <div class="stat-label">VIEWERS</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-value">245</div>
+                            <div class="stat-label">LIKES</div>
+                        </div>
+                    </div>
+                    <p>Watch our live tournaments and learn from the pros. We stream major tournaments with commentary and player perspectives.</p>
+                    
+                    <div class="subscribe-note">
+                        <h4>SUBSCRIBE TO OUR CHANNEL</h4>
+                        <p>Never miss a tournament stream! Get notified when we go live and watch the best Free Fire action.</p>
+                        <a href="https://www.youtube.com/channel/YOUR_CHANNEL_ID" target="_blank" class="youtube-btn" style="margin-top: 1rem;">
+                            <i class="fab fa-youtube"></i> SUBSCRIBE NOW
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact-section" id="contact">
+        <h2 class="section-title">NEED HELP? CONTACT US</h2>
+        <div class="contact-container">
+            <h3 class="contact-title">GET IN TOUCH</h3>
+            <div class="contact-info">
+                <div class="contact-item">
+                    <div class="contact-label">WHATSAPP FOR TOURNAMENT DETAILS</div>
+                    <div class="contact-value">+91 </div>
+                </div>
+                <div class="contact-item">
+                    <div class="contact-label">CUSTOMER SUPPORT</div>
+                    <div class="contact-value">+91 </div>
+                </div>
+            </div>
+            <p>Have questions about tournaments, payments, or rules? Contact us directly on WhatsApp for instant support.</p>
+            <a href="https://wa.me/919103799445?text=Hi%20FreeFireArena,%20I%20want%20to%20join%20a%20tournament" class="whatsapp-btn" target="_blank">
+                <i class="fab fa-whatsapp"></i> CHAT ON WHATSAPP
+            </a>
+        </div>
+    </section>
+
+    <!-- Final CTA -->
+    <section class="final-cta">
+        <h2>WHAT ARE YOU WAITING FOR?</h2>
+        <p>Thousands of players are competing. Your Booyah is waiting.</p>
+        <a href="#tournaments" class="cta-primary">FIND YOUR TOURNAMENT</a>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>TOURNAMENTS</h3>
+                <a href="#">Browse All</a>
+                <a href="#">Schedule</a>
+                <a href="#">Rules & Format</a>
+                <a href="#">Prize Distribution</a>
+            </div>
+            <div class="footer-section">
+                <h3>ACCOUNT</h3>
+                <a href="#">Dashboard</a>
+                <a href="#">Transaction History</a>
+                <a href="#">Team Management</a>
+                <a href="#">Settings</a>
+            </div>
+            <div class="footer-section">
+                <h3>SUPPORT</h3>
+                <a href="#">FAQ</a>
+                <a href="https://wa.me/919103799445" target="_blank">Contact Us</a>
+                <a href="#">Payment Methods</a>
+                <a href="#">Terms of Service</a>
+            </div>
+            <div class="footer-section">
+                <h3>CONNECT</h3>
+                <a href="https://www.youtube.com/channel/YOUR_CHANNEL_ID" target="_blank">YouTube</a>
+                <a href="#">Discord</a>
+                <a href="#">Twitter</a>
+                <a href="#">Instagram</a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 FreeFireArena.gg. All rights reserved. | Contact: +91 91037 99445 | Secure payments powered by Stripe</p>
+        </div>
+    </footer>
+
+    <script>
+        // Prize Counter Animation
+        function animatePrizeCounter() {
+            const counter = document.getElementById('prizeCounter');
+            let currentValue = 350000;
+            
+            setInterval(() => {
+                currentValue += Math.floor(Math.random() * 100) + 50;
+                counter.textContent = '₹' + currentValue.toLocaleString('en-IN');
+            }, 3000);
+        }
+        
+        // Filter Tournaments by Mode
+        function filterTournaments(mode) {
+            const cards = document.querySelectorAll('.tournament-card');
+            const tabs = document.querySelectorAll('.mode-tab');
+            
+            // Update active tab
+            tabs.forEach(tab => {
+                tab.classList.remove('active');
+                if (tab.textContent.toLowerCase().includes(mode) || 
+                    (mode === 'all' && tab.textContent.includes('ALL'))) {
+                    tab.classList.add('active');
+                }
+            });
+            
+            // Filter cards
+            cards.forEach(card => {
+                if (mode === 'all') {
+                    card.style.display = 'block';
+                } else {
+                    card.style.display = card.dataset.mode === mode ? 'block' : 'none';
+                }
+            });
+        }
+        
+        // WhatsApp configuration (user provided local number: 9103799445)
+        const WHATSAPP_LOCAL_NUMBER = '9103799445';
+        const WHATSAPP_NUMBER = '91' + WHATSAPP_LOCAL_NUMBER; // include country code for wa.me links
+
+        // Join Tournament - Redirect to WhatsApp (redirects current tab)
+        function joinTournament(tournamentName) {
+            const message = `Hi FreeFireArena, I want to join the tournament: ${tournamentName}. Please provide details.`;
+            const encodedMessage = encodeURIComponent(message);
+            // Redirect the current page to WhatsApp chat with a prefilled message
+            window.location.href = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodedMessage}`;
+        }
+        
+        // Countdown Timer Simulation
+        function updateCountdowns() {
+            const countdowns = document.querySelectorAll('.countdown-time');
+            
+            setInterval(() => {
+                countdowns.forEach(countdown => {
+                    const time = countdown.textContent.split(':');
+                    let hours = parseInt(time[0]);
+                    let minutes = parseInt(time[1]);
+                    let seconds = parseInt(time[2]);
+                    
+                    if (seconds > 0) {
+                        seconds--;
+                    } else if (minutes > 0) {
+                        minutes--;
+                        seconds = 59;
+                    } else if (hours > 0) {
+                        hours--;
+                        minutes = 59;
+                        seconds = 59;
+                    }
+                    
+                    countdown.textContent = 
+                        String(hours).padStart(2, '0') + ':' + 
+                        String(minutes).padStart(2, '0') + ':' + 
+                        String(seconds).padStart(2, '0');
+                });
+            }, 1000);
+        }
+        
+        // Smooth Scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+        
+        // Initialize animations
+        window.addEventListener('load', () => {
+            animatePrizeCounter();
+            updateCountdowns();
+        });
+        
+        // Scroll animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.animation = 'fadeInUp 0.6s ease forwards';
+                }
+            });
+        }, observerOptions);
+        
+        // Observe elements
+        document.querySelectorAll('.step-card, .tournament-card, .winner-card').forEach(el => {
+            observer.observe(el);
+        });
+        
+        // Add fadeInUp animation
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes fadeInUp {
+                from {
+                    opacity: 0;
+                    transform: translateY(30px);
+                }
+                to {
+                    opacity: 1;
+                    transform: translateY(0);
+                }
+            }
+            .dot {
+                display: inline-block;
+                width: 8px;
+                height: 8px;
+                background: white;
+                border-radius: 50%;
+                margin-right: 5px;
+                animation: blink 1.5s infinite;
+            }
+        `;
+        document.head.appendChild(style);
+
+        // Ensure JOIN NOW buttons work even if inline handlers fail
+        function attachJoinButtonListeners() {
+            document.querySelectorAll('.join-btn').forEach(btn => {
+                // avoid adding duplicate listeners
+                if (btn.__joinListenerAttached) return;
+                btn.addEventListener('click', (e) => {
+                    const name = btn.dataset.tournament || btn.getAttribute('data-tournament') || btn.textContent.trim();
+                    joinTournament(name);
+                });
+                btn.__joinListenerAttached = true;
+            });
+        }
+
+        // Attach when DOM is ready
+        if (document.readyState === 'complete' || document.readyState === 'interactive') {
+            attachJoinButtonListeners();
+        } else {
+            document.addEventListener('DOMContentLoaded', attachJoinButtonListeners);
+        }
+    </script>
+</body>
+</html>
